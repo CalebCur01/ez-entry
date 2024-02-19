@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Viewer</title>
+    <title> Vieweeer</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 
 <div class="container mt-4">
-    <h2>JSON Viewer</h2>
+    <h2> Viewer</h2>
     
     <div class="form-group">
-        <label for="leftCodeInput">Enter LEFT Code:</label>
+        <label for="leftInput">Enter LEFT Code:</label>
         <input type="text" class="form-control" id="leftInput" placeholder="E10">
     </div>
 
     <div class="form-group">
-        <label for="rightCodeInput">Enter RIGHT Code:</label>
+        <label for="rightInput">Enter RIGHT Code:</label>
         <input type="text" class="form-control" id="rightInput" placeholder="E10">
     </div>
 
@@ -79,8 +79,8 @@
         .catch(error => console.error('Error fetching data:', error));
 
     function fillBoxes() {
-        var leftCodeInput = document.getElementById("leftInput").value.toUpperCase();
-        var rightCodeInput = document.getElementById("rightInput").value.toUpperCase();
+        var leftInput = document.getElementById("leftInput").value.toUpperCase();
+        var rightInput = document.getElementById("rightInput").value.toUpperCase();
         var leftBox = document.getElementById("leftBox");
         var rightBox = document.getElementById("rightBox");
 
