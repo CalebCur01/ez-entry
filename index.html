@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON Data Viewerr</title>
+    <title>JSON Data Viewerrrrr</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -11,9 +11,14 @@
 <div class="container mt-4">
     <h2>JSON Data Viewer</h2>
     
+   <div class="form-group">
+        <label for="leftCodeInput">Enter LEFT Code:</label>
+        <input type="text" class="form-control" id="leftCodeInput" placeholder="E10">
+    </div>
+
     <div class="form-group">
-        <label for="codeInput">Enter Code:</label>
-        <input type="text" class="form-control" id="codeInput" placeholder="E10">
+        <label for="rightCodeInput">Enter RIGHT Code:</label>
+        <input type="text" class="form-control" id="rightCodeInput" placeholder="E10">
     </div>
 
     <div class="form-group">
@@ -31,7 +36,11 @@
     <button class="btn btn-secondary" onclick="copyToClipboard('rightBox')">Copy RIGHT</button>
 </div>
 
-<!-- Add Bootstrap JS and Popper.js links here -->
+    <button class="btn btn-primary" onclick="fillBoxes()">Submit</button>
+    <button class="btn btn-secondary" onclick="copyToClipboard('leftBox')">Copy LEFT</button>
+    <button class="btn btn-secondary" onclick="copyToClipboard('rightBox')">Copy RIGHT</button>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -828,18 +837,19 @@
   }
 };
 
-    function fillBoxes() {
-        var codeInput = document.getElementById("codeInput").value.toUpperCase();
+function fillBoxes() {
+        var leftCodeInput = document.getElementById("leftCodeInput").value.toUpperCase();
+        var rightCodeInput = document.getElementById("rightCodeInput").value.toUpperCase();
         var leftBox = document.getElementById("leftBox");
         var rightBox = document.getElementById("rightBox");
 
-        if (jsonData[codeInput]) {
-            leftBox.value = jsonData[codeInput].LEFT;
-            rightBox.value = jsonData[codeInput].RIGHT;
+        if (jsonData[leftCodeInput] && jsonData[rightCodeInput]) {
+            leftBox.value = jsonData[leftCodeInput].LEFT;
+            rightBox.value = jsonData[rightCodeInput].RIGHT;
         } else {
             leftBox.value = "";
             rightBox.value = "";
-            alert("Invalid code. Please enter a valid code.");
+            alert("Invalid code. Please enter valid codes.");
         }
     }
 
