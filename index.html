@@ -23,6 +23,7 @@
     </div>
 
     <div class="btn-group">
+        <button class="btn btn-primary" onclick="updateFields()"> Submit</button>
         <button class="btn btn-primary" onclick="copyToClipboard('leftField')">Copy LEFT</button>
         <button class="btn btn-primary" onclick="copyToClipboard('rightField')">Copy RIGHT</button>
     </div>
@@ -840,8 +841,6 @@
         alert(fieldId + " value copied to clipboard!");
     }
 
-    // Initial update of fields
-    updateFields();
 </script>
 
 </body>
