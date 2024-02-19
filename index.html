@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON Viewer</title>
+    <title> Viewer</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -52,7 +52,7 @@
             jsonData = data;
 
             // Access and use the data dynamically based on user input
-            document.getElementById('leftCodeInput').addEventListener('input', function () {
+            document.getElementById('leftInput').addEventListener('input', function () {
                 var leftInput = this.value.toUpperCase();
 
                 if (jsonData[leftInput]) {
@@ -64,7 +64,7 @@
                 }
             });
 
-            document.getElementById('rightCodeInput').addEventListener('input', function () {
+            document.getElementById('rightInput').addEventListener('input', function () {
                 var rightInput = this.value.toUpperCase();
 
                 if (jsonData[rightInput]) {
@@ -79,14 +79,14 @@
         .catch(error => console.error('Error fetching data:', error));
 
     function fillBoxes() {
-        var leftCodeInput = document.getElementById("leftCodeInput").value.toUpperCase();
-        var rightCodeInput = document.getElementById("rightCodeInput").value.toUpperCase();
+        var leftCodeInput = document.getElementById("leftInput").value.toUpperCase();
+        var rightCodeInput = document.getElementById("rightInput").value.toUpperCase();
         var leftBox = document.getElementById("leftBox");
         var rightBox = document.getElementById("rightBox");
 
-        if (jsonData[leftCodeInput] && jsonData[rightCodeInput]) {
-            leftBox.value = jsonData[leftCodeInput].LEFT;
-            rightBox.value = jsonData[rightCodeInput].RIGHT;
+        if (jsonData[leftInput] && jsonData[rightInput]) {
+            leftBox.value = jsonData[leftInput].LEFT;
+            rightBox.value = jsonData[rightInput].RIGHT;
         } else {
             leftBox.value = "";
             rightBox.value = "";
