@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON RRRRRRRR Viewer</title>
+    <title>vvvviewer</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 
 <div class="container mt-4">
-    <h2>JSON Data Viewer</h2>
+    <h2>JSON Daddddta Viewer</h2>
     
     <div class="form-group">
         <label for="leftCodeInput">Enter LEFT Code:</label>
@@ -52,19 +52,30 @@
             jsonData = data;
 
             // Access and use the data dynamically based on user input
-            document.getElementById('leftCodeInput').addEventListener('input', function () {
-                var codeInput = this.value.toUpperCase();
+document.getElementById('leftCodeInput').addEventListener('input', function () {
+    var codeInput = this.value.toUpperCase();
 
-                if (jsonData[codeInput]) {
-                    document.getElementById('leftBox').value = jsonData[codeInput].LEFT;
-                    document.getElementById('rightBox').value = jsonData[codeInput].RIGHT;
-                } else {
-                    document.getElementById('leftBox').value = '';
-                    document.getElementById('rightBox').value = '';
-                }
-            });
-        })
-        .catch(error => console.error('Error fetching data:', error));
+    if (jsonData[codeInput]) {
+        document.getElementById('leftBox').value = jsonData[codeInput].LEFT;
+        document.getElementById('rightBox').value = jsonData[codeInput].RIGHT;
+    } else {
+        document.getElementById('leftBox').value = '';
+        document.getElementById('rightBox').value = '';
+    }
+});
+
+document.getElementById('rightCodeInput').addEventListener('input', function () {
+    var codeInput = this.value.toUpperCase();
+
+    if (jsonData[codeInput]) {
+        document.getElementById('leftBox').value = jsonData[codeInput].LEFT;
+        document.getElementById('rightBox').value = jsonData[codeInput].RIGHT;
+    } else {
+        document.getElementById('leftBox').value = '';
+        document.getElementById('rightBox').value = '';
+    }
+});
+    .catch(error => console.error('Error fetching data:', error));
 
     function fillBoxes() {
         var leftCodeInput = document.getElementById("leftCodeInput").value.toUpperCase();
