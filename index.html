@@ -13,15 +13,20 @@
     <h2 class="mb-4">Enter Code</h2>
 
     <div class="form-group">
-        <label for="leftField">LEFT:</label>
-        <input type="text" class="form-control" id="leftField">
-    </div>
+    <label for="leftField">LEFT:</label>
+    <input type="text" class="form-control" id="leftField" oninput="updateFields()">
+</div>
 
-    <div class="form-group">
-        <label for="rightField">RIGHT:</label>
-        <input type="text" class="form-control" id="rightField">
-    </div>
+<div class="form-group">
+    <label for="rightField">RIGHT:</label>
+    <input type="text" class="form-control" id="rightField" oninput="updateFields()">
+</div>
 
+<!-- Add a select element with id "selectField" for dropdown selection -->
+<div class="form-group">
+    <label for="selectField">Select Option:</label>
+    <select class="form-control" id="selectField" onchange="updateFields()"></select>
+</div>
     <div class="btn-group">
         <button class="btn btn-primary" onclick="updateFields()"> Submit</button>
         <button class="btn btn-primary" onclick="copyToClipboard('leftField')">Copy LEFT</button>
@@ -828,18 +833,42 @@
 
     // Function to update fields based on the selected option
     function updateFields() {
-        var selectedField = document.getElementById("selectField").value;
-        document.getElementById("leftField").value = jsonData[selectedField]["LEFT"];
-        document.getElementById("rightField").value = jsonData[selectedField]["RIGHT"];
+        var leftFieldValue = document.getElementById("leftField").value;
+    var rightFieldValue = document.getElementById("rightField").value;
+
+    // If both left and right fields are filled, try to find a match in the jsonData object
+    if (leftFieldValue && rightFieldValue) {
+        for (var key in jsonData) {
+            if (typeof jsonData[key] === 'object') {
+                if (jsonData[key]["LEFT"] === leftFieldValue && jsonData[key]["RIGHT"] === rightFieldValue) {
+                    // Match found, update the dropdown and break out of the loop
+                    document.getElementById("selectField").value = key;
+                    break;
+                }
+            }
+        }
+    } else {
+        // If either left or right field is empty, reset the dropdown to the default option
+        document.getElementById("selectField").value = "";
     }
 
-    // Function to copy the content of a field to the clipboard
-    function copyToClipboard(fieldId) {
-        var field = document.getElementById(fieldId);
-        field.select();
-        document.execCommand("copy");
-        alert(fieldId + " value copied to clipboard!");
+    // Dynamically populate the dropdown options
+    var selectDropdown = document.getElementById("selectField");
+    selectDropdown.innerHTML = ""; // Clear existing options
+
+    // Add a default option
+    var defaultOption = document.createElement("option");
+    defaultOption.text = "Select an option";
+    selectDropdown.add(defaultOption);
+
+    // Add options from jsonData keys
+    for (var key in jsonData) {
+        var option = document.createElement("option");
+        option.value = key;
+        option.text = key;
+        selectDropdown.add(option);
     }
+}
 
 </script>
 
