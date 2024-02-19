@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Vieweeer</title>
+    <title>JSON Data Viewer</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 
 <div class="container mt-4">
-    <h2> Viewer</h2>
-    
+    <h2>JSON Viewer</h2>
+
     <div class="form-group">
         <label for="leftInput">Enter LEFT Code:</label>
         <input type="text" class="form-control" id="leftInput" placeholder="E10">
@@ -54,25 +54,35 @@
             // Access and use the data dynamically based on user input
             document.getElementById('leftInput').addEventListener('input', function () {
                 var leftInput = this.value.toUpperCase();
+                var rightInput = document.getElementById('rightInput').value.toUpperCase();
 
                 if (jsonData[leftInput]) {
                     document.getElementById('leftBox').value = jsonData[leftInput].LEFT;
-                    document.getElementById('rightBox').value = jsonData[rightInput].RIGHT;
                 } else {
                     document.getElementById('leftBox').value = '';
+                }
+
+                if (jsonData[rightInput]) {
+                    document.getElementById('rightBox').value = jsonData[rightInput].RIGHT;
+                } else {
                     document.getElementById('rightBox').value = '';
                 }
             });
 
             document.getElementById('rightInput').addEventListener('input', function () {
                 var rightInput = this.value.toUpperCase();
+                var leftInput = document.getElementById('leftInput').value.toUpperCase();
 
                 if (jsonData[rightInput]) {
-                    document.getElementById('leftBox').value = jsonData[leftInput].LEFT;
                     document.getElementById('rightBox').value = jsonData[rightInput].RIGHT;
                 } else {
-                    document.getElementById('leftBox').value = '';
                     document.getElementById('rightBox').value = '';
+                }
+
+                if (jsonData[leftInput]) {
+                    document.getElementById('leftBox').value = jsonData[leftInput].LEFT;
+                } else {
+                    document.getElementById('leftBox').value = '';
                 }
             });
         })
@@ -84,13 +94,18 @@
         var leftBox = document.getElementById("leftBox");
         var rightBox = document.getElementById("rightBox");
 
-        if (jsonData[leftInput] && jsonData[rightInput]) {
+        if (jsonData[leftInput]) {
             leftBox.value = jsonData[leftInput].LEFT;
-            rightBox.value = jsonData[rightInput].RIGHT;
         } else {
             leftBox.value = "";
+            alert("Invalid LEFT code. Please enter a valid code.");
+        }
+
+        if (jsonData[rightInput]) {
+            rightBox.value = jsonData[rightInput].RIGHT;
+        } else {
             rightBox.value = "";
-            alert("Invalid code. Please enter valid codes.");
+            alert("Invalid RIGHT code. Please enter a valid code.");
         }
     }
 
