@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON DataRRRRR</title>
+    <title>JSON RRRRRRRR Viewer</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 
 <div class="container mt-4">
-    <h2>JSON Data ViRRewer</h2>
+    <h2>JSON Data Viewer</h2>
     
     <div class="form-group">
         <label for="leftCodeInput">Enter LEFT Code:</label>
@@ -41,44 +41,46 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
+    var jsonData;
+
     // fetch json data
     fetch('data.json')
         .then(response => response.json())
         .then(data => {
             // Process the data and perform actions
             console.log(data);
+            jsonData = data;
 
             // Access and use the data dynamically based on user input
             document.getElementById('leftCodeInput').addEventListener('input', function () {
                 var codeInput = this.value.toUpperCase();
 
-                if (data[codeInput]) {
-                    document.getElementById('leftBox').value = data[codeInput].LEFT;
-                    document.getElementById('rightBox').value = data[codeInput].RIGHT;
+                if (jsonData[codeInput]) {
+                    document.getElementById('leftBox').value = jsonData[codeInput].LEFT;
+                    document.getElementById('rightBox').value = jsonData[codeInput].RIGHT;
                 } else {
                     document.getElementById('leftBox').value = '';
                     document.getElementById('rightBox').value = '';
                 }
             });
-
-            // Now that the data is available, you can use it in the fillBoxes function
-            function fillBoxes() {
-                var leftCodeInput = document.getElementById("leftCodeInput").value.toUpperCase();
-                var rightCodeInput = document.getElementById("rightCodeInput").value.toUpperCase();
-                var leftBox = document.getElementById("leftBox");
-                var rightBox = document.getElementById("rightBox");
-
-                if (data[leftCodeInput] && data[rightCodeInput]) {
-                    leftBox.value = data[leftCodeInput].LEFT;
-                    rightBox.value = data[rightCodeInput].RIGHT;
-                } else {
-                    leftBox.value = "";
-                    rightBox.value = "";
-                    alert("Invalid code. Please enter valid codes.");
-                }
-            }
         })
         .catch(error => console.error('Error fetching data:', error));
+
+    function fillBoxes() {
+        var leftCodeInput = document.getElementById("leftCodeInput").value.toUpperCase();
+        var rightCodeInput = document.getElementById("rightCodeInput").value.toUpperCase();
+        var leftBox = document.getElementById("leftBox");
+        var rightBox = document.getElementById("rightBox");
+
+        if (jsonData[leftCodeInput] && jsonData[rightCodeInput]) {
+            leftBox.value = jsonData[leftCodeInput].LEFT;
+            rightBox.value = jsonData[rightCodeInput].RIGHT;
+        } else {
+            leftBox.value = "";
+            rightBox.value = "";
+            alert("Invalid code. Please enter valid codes.");
+        }
+    }
 
     function copyToClipboard(elementId) {
         var textarea = document.getElementById(elementId);
