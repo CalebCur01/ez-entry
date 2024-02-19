@@ -3,41 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EZ Entryr</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>JSON Data Viewer</title>
+    <!-- Add Bootstrap CSS link here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 
 <div class="container mt-4">
-    <h2 class="mb-4">Enter Code</h2>
+    <h2>JSON Data Viewer</h2>
+    
+    <div class="form-group">
+        <label for="codeInput">Enter Code:</label>
+        <input type="text" class="form-control" id="codeInput" placeholder="E10">
+    </div>
 
     <div class="form-group">
-    <label for="leftField">LEFT:</label>
-    <input type="text" class="form-control" id="leftField" oninput="updateFields()">
-</div>
-
-<div class="form-group">
-    <label for="rightField">RIGHT:</label>
-    <input type="text" class="form-control" id="rightField" oninput="updateFields()">
-</div>
-
-<!-- Add a select element with id "selectField" for dropdown selection -->
-<div class="form-group">
-    <label for="selectField">Select Option:</label>
-    <select class="form-control" id="selectField" onchange="updateFields()"></select>
-</div>
-    <div class="btn-group">
-        <button class="btn btn-primary" onclick="updateFields()"> Submit</button>
-        <button class="btn btn-primary" onclick="copyToClipboard('leftField')">Copy LEFT</button>
-        <button class="btn btn-primary" onclick="copyToClipboard('rightField')">Copy RIGHT</button>
+        <label for="leftBox">LEFT:</label>
+        <textarea class="form-control" id="leftBox" rows="3" readonly></textarea>
     </div>
+
+    <div class="form-group">
+        <label for="rightBox">RIGHT:</label>
+        <textarea class="form-control" id="rightBox" rows="3" readonly></textarea>
+    </div>
+
+    <button class="btn btn-primary" onclick="fillBoxes()">Submit</button>
+    <button class="btn btn-secondary" onclick="copyToClipboard('leftBox')">Copy LEFT</button>
+    <button class="btn btn-secondary" onclick="copyToClipboard('rightBox')">Copy RIGHT</button>
 </div>
 
-<!-- Bootstrap JS and Popper.js -->
+<!-- Add Bootstrap JS and Popper.js links here -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
     var jsonData = {
@@ -829,47 +827,29 @@
     "RIGHT": "R3IKNF711CDL",
     "LEFT": "L3IKNF711CDL"
   }
-    };
+};
 
-    // Function to update fields based on the selected option
-    function updateFields() {
-        var leftFieldValue = document.getElementById("leftField").value;
-    var rightFieldValue = document.getElementById("rightField").value;
+    function fillBoxes() {
+        var codeInput = document.getElementById("codeInput").value.toUpperCase();
+        var leftBox = document.getElementById("leftBox");
+        var rightBox = document.getElementById("rightBox");
 
-    // If both left and right fields are filled, try to find a match in the jsonData object
-    if (leftFieldValue && rightFieldValue) {
-        for (var key in jsonData) {
-            if (typeof jsonData[key] === 'object') {
-                if (jsonData[key]["LEFT"] === leftFieldValue && jsonData[key]["RIGHT"] === rightFieldValue) {
-                    // Match found, update the dropdown and break out of the loop
-                    document.getElementById("selectField").value = key;
-                    break;
-                }
-            }
+        if (jsonData[codeInput]) {
+            leftBox.value = jsonData[codeInput].LEFT;
+            rightBox.value = jsonData[codeInput].RIGHT;
+        } else {
+            leftBox.value = "";
+            rightBox.value = "";
+            alert("Invalid code. Please enter a valid code.");
         }
-    } else {
-        // If either left or right field is empty, reset the dropdown to the default option
-        document.getElementById("selectField").value = "";
     }
 
-    // Dynamically populate the dropdown options
-    var selectDropdown = document.getElementById("selectField");
-    selectDropdown.innerHTML = ""; // Clear existing options
-
-    // Add a default option
-    var defaultOption = document.createElement("option");
-    defaultOption.text = "Select an option";
-    selectDropdown.add(defaultOption);
-
-    // Add options from jsonData keys
-    for (var key in jsonData) {
-        var option = document.createElement("option");
-        option.value = key;
-        option.text = key;
-        selectDropdown.add(option);
+    function copyToClipboard(elementId) {
+        var textarea = document.getElementById(elementId);
+        textarea.select();
+        document.execCommand("copy");
+        alert(elementId === "leftBox" ? "LEFT copied to clipboard" : "RIGHT copied to clipboard");
     }
-}
-
 </script>
 
 </body>
