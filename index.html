@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>vvvvivvewer</title>
+    <title>VEUVUEUVEUUVE</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 
 <div class="container mt-4">
-    <h2>JSON Datavvv Viewer</h2>
+    <h2>JSON ABBABABABDADASF Viewer</h2>
     
     <div class="form-group">
         <label for="leftCodeInput">Enter LEFT Code:</label>
@@ -53,11 +53,11 @@
 
             // Access and use the data dynamically based on user input
             document.getElementById('leftCodeInput').addEventListener('input', function () {
-                var codeInput = this.value.toUpperCase();
+                var leftInput = this.value.toUpperCase();
 
-                if (jsonData[codeInput]) {
-                    document.getElementById('leftBox').value = jsonData[codeInput].LEFT;
-                    document.getElementById('rightBox').value = jsonData[codeInput].RIGHT;
+                if (jsonData[leftInput]) {
+                    document.getElementById('leftBox').value = jsonData[leftInput].LEFT;
+                    document.getElementById('rightBox').value = jsonData[rightInput].RIGHT;
                 } else {
                     document.getElementById('leftBox').value = '';
                     document.getElementById('rightBox').value = '';
@@ -65,11 +65,11 @@
             });
 
             document.getElementById('rightCodeInput').addEventListener('input', function () {
-                var codeInput = this.value.toUpperCase();
+                var rightInput = this.value.toUpperCase();
 
-                if (jsonData[codeInput]) {
-                    document.getElementById('leftBox').value = jsonData[codeInput].LEFT;
-                    document.getElementById('rightBox').value = jsonData[codeInput].RIGHT;
+                if (jsonData[rightInput]) {
+                    document.getElementById('leftBox').value = jsonData[leftInput].LEFT;
+                    document.getElementById('rightBox').value = jsonData[rightInput].RIGHT;
                 } else {
                     document.getElementById('leftBox').value = '';
                     document.getElementById('rightBox').value = '';
