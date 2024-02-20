@@ -552,7 +552,7 @@
     "RIGHT": "R1JKN6A31CDL"
   },
   "A14": {
-    "RIGHT": "R1JKNG6A41CDL",
+    "RIGHT": "R1JKN6A41CDL",
     "LEFT": "L1JKN6A41CDL"
   },
   "A15": {
@@ -560,15 +560,15 @@
     "LEFT": "L1JKN6A51CDL"
   },
   "A16": {
-    "RIGHT": "R1JKNGA61CDL",
+    "RIGHT": "R1JKN6A61CDL",
     "LEFT": "L1JKNG6A61CDL"
   },
   "A17": {
-    "RIGHT": "R1JKNGA71CDL",
+    "RIGHT": "R1JKN6A71CDL",
     "LEFT": "L1JKN6A71CDL"
   },
   "A18": {
-    "RIGHT": "R1JKNGA81CDL",
+    "RIGHT": "R1JKN6A81CDL",
     "LEFT": "L1JKN6A81CDL"
   },
   "A19": {
@@ -580,7 +580,7 @@
     "LEFT": "L1JKN6AA1CDL"
   },
   "A21": {
-    "RIGHT": "R1JKNGAB1CDL",
+    "RIGHT": "R1JKN6AB1CDL",
     "LEFT": "L1JKN6AB1CDL"
   },
   "B1": {
@@ -786,5 +786,33 @@
   "I15": {
     "RIGHT": "R3IKNF711CDL",
     "LEFT": "L3IKNF711CDL"
+  },
+  "I16":{
+    "LEFT": "L3IKNF721CDL"
+    "RIGHT": "R3IKNF711CDL"
+  },
+  "I17":{
+    "LEFT": "L3IKNF731CDL"
+    "RIGHT": "R3IKNF731CDL"
+  },
+  "I18":{
+    "LEFT": "L3IKNF741CDL"
+    "RIGHT": "R3IKNF741CDL"
+  },
+  "I19":{
+    "LEFT": "L3IKNF751CDL"
+    "RIGHT": "R3IKNF751CDL"
+  },
+  "I20":{
+    "LEFT": "L3IKNF761CDL"
+    "RIGHT": "R3IKNF761CDL"
+  },
+  "I21":{
+    "LEFT": "L3IKNF771CDL"
+    "RIGHT": "R3IKNF771CDL"
+  },
+  "I22":{
+    "LEFT": "L3IKNF781CDL"
+    "RIGHT": "R3IKNF781CDL"
   }
 }
