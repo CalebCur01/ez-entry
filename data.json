@@ -814,5 +814,17 @@
   "I22":{
     "LEFT": "L3IKNF781CDL",
     "RIGHT": "R3IKNF781CDL"
+  },
+  "C12":{
+    "LEFT": "L2MKNKU51CDL",
+    "RIGHT": "R2MKNKU51CDL"
+  },
+  "C13":{
+    "LEFT": "L2MKNKU81CDL",
+    "RIGHT": "R2MKNKU81CDL"
+  },
+  "C14":{
+    "LEFT": "L2MKNKU71CDL",
+    "RIGHT": "L2MKNKU71CDL"
   }
 }
